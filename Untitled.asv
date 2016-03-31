@@ -1,0 +1,19 @@
+clear all;
+% I1 = rgb2gray(imread('1.jpg'));
+% I2 = rgb2gray(imread('2.jpg'));
+% Ir = I1;
+% I = I2;
+Ir = rgb2gray(imread('images/keb_0.jpg'));
+for i = 1:2,
+    i
+    I = rgb2gray(imread(sprintf('images/paris_%d.jpg',i)));
+    
+%     stitch;
+    I1 = Ir;
+    I2 = I;
+%     Ir = stitch((Ir), I);
+    stitch;
+%     figure; imshow(Ir); title('Recovered image');
+%     figure; imshow(uint8(Ir)); title('Recovered image');
+end
+figure; imshow(Ir); title('Recovered image');
