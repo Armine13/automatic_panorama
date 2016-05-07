@@ -1,14 +1,14 @@
-function [features, points] = extractFeaturesFromScene(imScene)
-%Returns features and points for each image in given scene
-% imScene - list of image names
+function [features, points] = extractFeaturesFromScene(imArray)
+%Returns features and points for each image 
+% imArray - cell array of images
 % features - cell array of features
 % points - cell array of points
 
 features = {};
 points = {};
-N = numel(imScene);
+N = numel(imArray);
 for i = 1 : N,
-    I = imread(imScene{i});
+    I = imArray{i};
     
     %Convert to grayscale
     if size(size(I), 2) == 3,

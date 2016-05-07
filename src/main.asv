@@ -77,14 +77,12 @@ varargout{1} = handles.output;
 function browseButton_Callback(hObject, eventdata, handles)
 global imageArray;
 
-fileNames = {};
 if (get(handles.filesRadio,'Value') == 1),
     
     [fileNames, paths] = uigetfile({'*.jpg;*.tif;*.png;*.gif','All Image Files';...
         '*.*','All Files' },'Open Image','MultiSelect', 'on');
-    if fileNames == 0, return; end; 
+     
     N = numel(fileNames);
-    
     for i = 1: N,
         fileNames{i} = strcat(paths, fileNames{i});
     end
@@ -93,16 +91,11 @@ end
 if (get(handles.dirRadio,'Value') == 1),
     
     folder_name = uigetdir;
-    if folder_name == 0, return; end; 
     fileNames = getAllFiles(folder_name);
 end
 
-if (get(handles.radioVideo,'Value') == 1),
-    [file, filePath] = uigetfile({'*.avi;*.mp4;*.mov','All Video Files';...
-        '*.*','All Files' },'Open Video');
-    if file == 0, return; end; 
-    file = strcat(filePath, file);
-    fileNames = videoToImages(file);
+if (get(handles.videoRadio,'Value') == 1),
+    
 end
 
 if ~isempty(fileNames),

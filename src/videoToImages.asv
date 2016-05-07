@@ -1,0 +1,25 @@
+% function fileNames = videoToImages(videoPath)
+% [filename, path] = uigetfile({'*.avi;*.mp4;','All Video Files';...
+%     '*.*','All Files' },'Open Video');
+% filename = strcat(path, filename);
+videoPath = 'C:\Users\Mins\Google Drive\MSCV2\VP\automatic_panorama\small.mp4';
+
+
+d = '../images0/';
+mkdir(d);
+
+videoFReader = vision.VideoFileReader(videoPath);
+i = 0;
+k = 0;
+while ~isDone(videoFReader)
+    i = i + 1;
+    
+    frame = step(videoFReader);
+    if mod(i, 50) == 0,
+        filename = strcat(d,[sprintf('%03d',k) '.jpg']);
+        k = k + 1;
+        imwrite(frame, filename);
+    end
+    pause(0.01);
+    
+end
