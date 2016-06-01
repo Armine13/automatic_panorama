@@ -32,6 +32,7 @@ switch class(im)
  case 'double',  nim = double([]);
  case 'uint8',  nim = uint8([]);
 end
+% nim = double([]);
 
 if nargin<5
   verbose = 0;

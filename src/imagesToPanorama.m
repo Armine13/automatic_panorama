@@ -73,6 +73,6 @@ pan = zeros([height width dim]);
 for j = 1: n,
     I_proj = vgg_warp_H(I_array{j}, H_array{j}, 'linear', bbox);%projected image
 %           pan = step(blender, pan, I_proj, I_proj(:,:,1));
-pan = max(pan, I_proj);
+    pan = max(pan, I_proj);
 end
 pan = pan/255;
